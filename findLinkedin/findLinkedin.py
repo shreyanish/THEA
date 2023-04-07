@@ -120,35 +120,6 @@ def search_profile_mncs(company):
         sheet.insert_row(insertRow, 1) 
 
 
-
-    search_term = "site:instagram.com/in/ and AIIMS Delhi 2022 and people Female India Kerala"
-    print(search_term)
-    search_bar = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="tsf"]/div[1]/div[1]/div[2]/div/div[2]/input'))
-    )
-
-    search_bar.clear()
-    search_bar.send_keys(search_term)   
-    search_bar.send_keys(Keys.ENTER) 
-    time.sleep(2)
-
-    profile_div = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="rso"]/div[1]/div/div/div[1]/div/a'))
-    )
-    time.sleep(5)
-    profile_url = profile_div.get_attribute('href')
-    print(profile_url)
-
-    profile_info = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="rso"]/div[1]/div/div/div[1]/div/a/h3'))
-    )
-    print(profile_info)
-
-    insertRow = [profile_info.text,profile_url, 'AIIMS Delhi']
-    print('InsertRow: ',insertRow)
-    sheet.insert_row(insertRow, 1) 
-
-
 with open("findLinkedin/campus.csv", "r") as file:
     csvreader = csv.DictReader(file)
 
